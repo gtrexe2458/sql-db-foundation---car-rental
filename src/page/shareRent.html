@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share your Car Rental</title>
+  <link rel="stylesheet" href="" />
+</head>
+<body>
+
+	<h1>Want your car to be rented? </h1>
+
+	<form id="carForm">
+	
+		<h2>Vehicle Details</h2>
+		<label>Make/Brand: </label>
+		<input
+		    type="text"
+		    id="make"
+		    placeholder="Car Manufacturer"
+		    required
+		/>
+		<br>
+		<label>Model: </label>
+		<input
+		    type="text"
+		    id="model"
+		    placeholder="Car Model"
+		    required
+		/>
+		<br>
+		<label>Year: </label>
+		<input
+		    type="text"
+		    id="year"
+		    placeholder="Production Year"
+		    required
+		/>
+		<br>
+		<label>Color: </label>
+		<input
+		    tyoe="text"
+		    id="color"
+		    placeholder="Car Color"
+		    required
+		/>
+		<br>
+		<br>
+		<label>License: </label>
+		<input
+		    type="text"
+		    id="license_plate"
+		    placeholder="License Plate"
+		    required
+		/>
+		<br>
+		<label>Category</label>
+		<input
+		    type="text"
+		    id="category"
+		    placeholder="Car Category"
+		    required
+		/>
+		<br>
+		<label>Rent Value: </label>
+		<input
+		    type="number"
+		    id="daily_rent_eur"
+		    step="0.01"
+		    placeholder="Daily Rent"
+		    required
+		/>
+
+		<h2>Performance, Specifications:</h2>
+		<label>Engine: </label>
+		<input
+		    type="text"
+		    id="engine"
+		    placeholder="Car Engine"
+		    required
+		/>
+		<br>
+		<label>Horsepower: </label>
+		<input
+		    type="number"
+		    id="horsepower"
+		    placeholder="Horsepower (hp)"
+		    required
+		/>
+		<br>
+		<label>Acceleration: </label>
+		<input
+		    type="number"
+		    id="accel_0_100_sec"
+		    step="0.01"
+		    placeholder="0 - 100 km/h Acceleration"
+		    required
+		/>
+		<br>
+		<label>Speed: (km/h)</label>
+		<input
+		    type="number"
+		    id="top_speed"
+		    placeholder="Top Speed"
+		    required
+		/>
+		<select id="speedUnit">
+		    <option value="kmh">kmh</option>
+		    <option value="mph">mph</option>
+		</select>
+
+		<h2>Car Content</h2>
+		<label>Image: </label>
+		<input 
+		    type="text"
+		    id="image_url"
+		    placeholder="your Dropbox image url"
+		    required
+		/>
+		<text> (any URL, or upload to Dropbox, and edit view permissions)
+		<br>
+		<label>Description: (Optional) </label>
+		<br>
+		<textarea
+		    type="text"
+		    id="description"
+		    placeholder="Car Description (Optional)"
+		></textarea>
+		<br>
+		<br>
+
+		<button id="uploadCar">Send Car</button>
+	</form>
+	<br>
+
+	<a href="./searchCar.html">Go Back? Click here.</a>
+
+	<script type="module" src="../script/shareRent.js" ></script>
+</body>
+</html>

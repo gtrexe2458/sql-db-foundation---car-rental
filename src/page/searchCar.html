@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />                      <title>Online Global Car Rental</title>
+  <link rel="stylesheet" href="" />
+</head>                                                                                       <body>
+
+        <button id="logout">Logout</button>
+	<br> <br>
+
+	<button id="settings">Profile Settings</button>
+	<br> <br>
+
+        <input type="text" id="searchCar" placeholder="country, color, car, category..."/>
+        <button id="searchBtn">Search</button>
+        <button id="resetSearch">Reset</button>
+	<br> <br>
+	<label>Display: </label>
+	<select id="searchMode">
+	    <option value="all">all cars</option>
+	    <option value="my">my cars</option>
+	</select>
+	<br> <br>
+        <label>Sort By: </label>
+        <select id="sortBy">
+	    <option value="vehicle_desc">Update: Newest First</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+            <option value="year_desc">Year: Newest First</option>
+            <option value="year_asc">Year: Oldest First</option>
+	    <option value="hp_asc">HP: Lower to Higher</option>
+	    <option value="hp_desc">HP: Higher to Lower</option>
+        </select>
+	<br> 
+	<hr> 
+
+	<p>(!) Do you want to share your own vehicle to rental and earn? <br>
+	(*) <a href="./shareRent.html">Click and Rent here.</a> <br> <br>                                         (*) Have questions? Got help: Please be honored, contact 
+	    <a href="mailto: gtrexe119@gmail.com"> gtrexe119@gmail.com</a>
+        </p>
+	<br>
+	<hr>
+	<br>
+
+        <div id="carSeed">
+        </div>
+        <br>
+
+        <button id="prevSeed">Previous Page</button>
+        <button id="nextSeed">Next Page</button>
+	<br> <br>
+
+	<script type="module" src="../script/searchCar.js"></script>
+	<script>
+		window.onerror = function (msg, url, lineNo, columnNo, error) {
+			      alert("CLIENT ERROR:\n" + msg + "\nLine: " + lineNo + "\nFile: " + url);
+			      return false;
+			    };
+		    window.addEventListener("unhandledrejection", function (event) {
+			          alert("UNHANDLED PROMISE REJECTION:\n" + event.reason);
+			        });
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Profile (Car Rental)</title>
+</head>
+<body>
+
+	<h1>Login back to Global Car Rental</h1>
+	<br>
+
+	<form id="loginForm">
+
+		<label>Email:</label><br>
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    id="email"
+                    required
+                />
+		<br> <br>
+
+		<label>Password:</label><br>
+                <input
+                    type="password"
+                    placeholder="Your Password"
+                    id="password"
+                    required
+                />
+                <br>
+
+                <p id="msg"></p>
+
+                <button type='submit'>Login</button>
+		<br> <br>
+
+        	<a href="signup.html">Sign Up</a>
+        </form>
+
+        <script src="../script/loginDB.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Settings</title>
+</head>
+<body>
+  <h2>Profile Settings</h2>
+  
+  <form id="profileForm">
+    <label>Email (Read-Only):</label><br>
+    <input type="email" id="email" disabled><br><br>
+
+    <label>Full Name:</label><br>
+    <input type="text" id="full_name" required><br><br>
+
+    <label>Contact Number:</label><br>
+    <input type="text" id="contact" required><br><br>
+
+    <label>Your ID / Passport:</label><br>
+    <input type="text" id="id" required><br><br>
+
+    <label>Country:</label><br>
+    <input type="text" id="country" required><br><br>
+
+    <button type="submit">Save Changes</button><br><br>
+  </form>
+
+  <div id="status"></div>
+
+  <a href="./searchCar.html">Go Back</a>
+
+  <script type="module" src="/script/profileDB.js"></script>
+</body>
+</html>

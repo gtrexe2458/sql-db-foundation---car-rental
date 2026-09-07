@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up (Car Rental / new profile)</title>
+  <link rel="stylesheet" href="../style/signupPassLog.css" />
+</head>
+<body>
+  
+	<h1>Sign Up to Global Car Rental</h1>
+	<br>
+
+	<form id="signupForm">
+
+		<label>Name:<label><br>
+		<input 
+		    type="text"
+		    placeholder="New Username"
+		    id="username"
+		    required
+		/>
+		<br> <br>
+
+		<label>Email:</label><br>
+		<input
+		    type="email"
+		    placeholder="Your Email"
+		    id="email"
+		    required
+		/>
+		<br> <br>
+
+		<label>Phone:</label><br>
+		<input
+		    type="text"
+		    placeholder="Phone Number"
+		    id="contact"
+		    required
+		/>
+		<br> <br>
+
+		<label>ID / Passport:</label><br>
+		<input
+		    type="text"
+		    placeholder="Your ID"
+		    id="id"
+		    required
+		/>
+		<label>(your passport: private save)</label>
+		<br> <br>
+
+		<label>Country:</label><br>
+		<input
+		    type="text"
+		    placeholder="Country Name"
+		    id="country"
+		    required
+		/>
+		<br> <br>
+
+		<label>New Password:</label><br>
+		<input
+		    type="password"
+		    placeholder="New Password"
+		    id="password"
+		    required
+		/>
+		<br> <br>
+
+		<div id="passLog">
+
+			<input type="checkbox" disabled/>
+			<label>8 Characters</label>
+			<br>
+			<input type="checkbox" disabled/>
+			<label>Uppercase Alphabet</label>
+			<br>
+			<input type="checkbox" disabled/>
+			<label>Lowercase Alphabet</label>
+			<br>
+			<input type="checkbox" disabled/>
+			<label>Number</label>
+		</div>
+		<br>
+
+		<p id="msg"></p>
+
+		<button type='submit'>Sign Up</button>
+		<br> <br>
+
+		<a href="./login.html">Login</a>
+	</form>
+
+	<script src="../script/signupDB.js"></script>
+</body>
+</html>

@@ -53,7 +53,7 @@ CarRental/
 
 ## 🛠️ Termux Setup & Git Commands
 
-This connects the **project folder you already have** (`~/storage/downloads/SQLdb/carRental`) to the existing GitHub repo. Use `git remote add origin` for this — **not** `git clone`. `git clone` downloads a brand-new copy into a new subfolder; it does not link a folder you already have. That mix-up is what caused the earlier `fatal: 'origin' does not appear to be a git repository` error: `git init` made an empty local repo, then `git clone` created an unrelated nested folder (`sql-db-foundation---car-rental`) instead of setting `origin` on the repo you were actually in.
+This connects the **project folder you already have** (`~/storage/downloads/SQLdb/carRental`) to the existing GitHub repo. Use `git remote add origin` for this — **not** `git clone`. `git clone` downloads a brand-new copy into a new subfolder; it does not link a folder you already have, and can leave the repo you're actually in with no `origin` set (causing a `fatal: 'origin' does not appear to be a git repository` error on push).
 
 **One-time cleanup** — remove the stray duplicate folder that clone created:
 ```bash
@@ -69,7 +69,7 @@ rm -rf ~/storage/downloads/SQLdb/carRental/sql-db-foundation---car-rental
    ```bash
    npm install express dotenv cors cookie-parser jsonwebtoken
    ```
-   > ⚠️ This line was cut off at the edge of an earlier screenshot right after `jsonwe...`. Add any remaining packages you know belong here (likely candidates for this stack: `mongoose`, `bcryptjs`) before running it.
+   > Add any other packages this project depends on (e.g. `mongoose` for MongoDB, `bcryptjs` for password hashing) if they aren't already installed.
 
 3. Initialize git and set the branch name to `main` immediately — this sidesteps the whole `master` vs `main` mismatch:
    ```bash
@@ -83,7 +83,7 @@ rm -rf ~/storage/downloads/SQLdb/carRental/sql-db-foundation---car-rental
    echo ".env" >> .gitignore
    ```
 
-5. Link the existing GitHub repo as `origin` — this is the step that got skipped last time:
+5. Link the existing GitHub repo as `origin`:
    ```bash
    git remote add origin https://github.com/gtrexe2458/sql-db-foundation---car-rental
    ```
@@ -127,7 +127,7 @@ git add .
 git commit -m "Initial commit"
 git push -u origin main --force
 ```
-- `rm -rf sql-db-foundation---car-rental` clears out the leftover clone folder from earlier so it doesn't get committed as junk.
+- `rm -rf sql-db-foundation---car-rental` clears out the duplicate folder created if `git clone` was ever run inside this directory by mistake, so it doesn't get committed as junk.
 - `--force` overwrites whatever's currently on GitHub's `main` with your local project — fine for a fresh setup where the remote only has GitHub's auto-generated starter content, but worth a quick look at the repo on github.com first if you're not sure.
 - To merge instead of overwriting, use `git pull origin main --allow-unrelated-histories` before pushing — but expect a merge conflict on README.md since both sides have one, which is more fiddly to resolve in Termux.
 
@@ -146,10 +146,10 @@ git push -u origin main --force
 |---|---|---|
 | Data Model | Document Store (NoSQL JSON) | Relational SQL & Foreign Keys |
 | Free Storage | 500 MB Shared Cluster | 5 GB Total Storage |
-| Free Monthly Quota | Throttled RAM/CPU | 500 Million Reads / *(cut off)* Million Writes |
+| Free Monthly Quota | Throttled RAM/CPU | 500 Million Reads / — Million Writes *(confirm exact figure)* |
 | Termux Driver Support | Standard TCP Node Driver | `@libsql/client` over HTTP/WebSocket (No native C++ compilation required) |
 
-> ⚠️ The Turso column ran off the right edge of the screenshot (there was a horizontal scrollbar in the original table), so the write-quota number is missing and the other Turso cells are best-effort reconstructions. Worth double-checking against Turso's current docs before publishing.
+> ⚠️ Some Turso figures above are approximate — confirm current limits against Turso's official docs/pricing page before relying on them.
 
 ## 🚀 Render Web Service Deployment
 

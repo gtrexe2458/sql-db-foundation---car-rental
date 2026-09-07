@@ -2,6 +2,8 @@
 
 A mobile-optimized full-stack car rental platform built with MongoDB, Express, JavaScript, and Node.js.
 
+🔗 **Live (Vercel):** [sql-db-foundation-car-rental](https://sql-db-foundation-car-rental-crnojm6xn-gpuc.vercel.app) ✅
+
 ---
 
 ## 📁 Directory Structure
@@ -51,49 +53,83 @@ CarRental/
 
 ## 🛠️ Termux Setup & Git Commands
 
-Execute the following commands in Termux to set up dependencies and push updates to the remote repository:
+This connects the **project folder you already have** (`~/storage/downloads/SQLdb/carRental`) to the existing GitHub repo. Use `git remote add origin` for this — **not** `git clone`. `git clone` downloads a brand-new copy into a new subfolder; it does not link a folder you already have. That mix-up is what caused the earlier `fatal: 'origin' does not appear to be a git repository` error: `git init` made an empty local repo, then `git clone` created an unrelated nested folder (`sql-db-foundation---car-rental`) instead of setting `origin` on the repo you were actually in.
+
+**One-time cleanup** — remove the stray duplicate folder that clone created:
+```bash
+rm -rf ~/storage/downloads/SQLdb/carRental/sql-db-foundation---car-rental
+```
 
 1. Navigate to the project directory:
    ```bash
-   cd ~/CarRental
+   cd ~/storage/downloads/SQLdb/carRental
    ```
 
 2. Install dependencies:
    ```bash
    npm install express dotenv cors cookie-parser jsonwebtoken
    ```
-   > ⚠️ This line was cut off at the edge of the screenshot right after `jsonwe...`. Add any remaining packages you know belong here (likely candidates for this stack: `mongoose`, `bcryptjs`) before running it.
+   > ⚠️ This line was cut off at the edge of an earlier screenshot right after `jsonwe...`. Add any remaining packages you know belong here (likely candidates for this stack: `mongoose`, `bcryptjs`) before running it.
 
-3. Ignore local environment files and installed modules:
+3. Initialize git and set the branch name to `main` immediately — this sidesteps the whole `master` vs `main` mismatch:
+   ```bash
+   git init
+   git branch -M main
+   ```
+
+4. Ignore local environment files and installed modules:
    ```bash
    echo "node_modules/" > .gitignore
    echo ".env" >> .gitignore
    ```
 
-4. Verify repository status:
+5. Link the existing GitHub repo as `origin` — this is the step that got skipped last time:
    ```bash
-   git status
+   git remote add origin https://github.com/gtrexe2458/sql-db-foundation---car-rental
    ```
 
-5. Stage all project files:
+6. Stage all project files:
    ```bash
    git add .
    ```
 
-6. Commit changes:
+7. Commit changes:
    ```bash
-   git commit -m "initial commit"
+   git commit -m "Initial commit"
    ```
 
-7. Push to the primary branch:
+8. Push to GitHub:
    ```bash
+   git push -u origin main
+   ```
+   > ⚠️ If this is rejected with "fetch first" or "unrelated histories," the GitHub repo already has a commit on it (e.g. from creating the repo with a starter README). Then either:
+   > - **Merge it in** (keeps remote history): `git pull origin main --allow-unrelated-histories`, resolve any conflicts, then `git push origin main`
+   > - **Overwrite it** (discards remote history): `git push -u origin main --force` — only do this if you're sure you don't need whatever's already on GitHub
+
+9. For every push after this first one, `origin` is already set, so it's just:
+   ```bash
+   git add .
+   git commit -m "your message"
    git push origin main
    ```
 
-8. Pull remote updates:
-   ```bash
-   git pull origin main
-   ```
+### Troubleshooting: Common Push Errors
+
+**"nothing added to commit but untracked files present"**
+This happens if you `git add` one specific file (e.g. `git add .gitignore`) instead of the whole project — git commits only what you staged, so everything else (README.md, config/, controllers/, db/, middleware/, models/, routes/, server.js, src/, package.json) stays untracked and never gets pushed. Always use `git add .` to stage the full project, not individual filenames, unless you deliberately want a partial commit.
+
+**`! [rejected] main -> main (fetch first)`**
+GitHub's `main` branch already has a commit your local repo doesn't have (usually the default one created when the repo was first made). Git refuses to push over history it hasn't seen. Fix, run in order:
+```bash
+cd ~/storage/downloads/SQLdb/carRental
+rm -rf sql-db-foundation---car-rental
+git add .
+git commit -m "Initial commit"
+git push -u origin main --force
+```
+- `rm -rf sql-db-foundation---car-rental` clears out the leftover clone folder from earlier so it doesn't get committed as junk.
+- `--force` overwrites whatever's currently on GitHub's `main` with your local project — fine for a fresh setup where the remote only has GitHub's auto-generated starter content, but worth a quick look at the repo on github.com first if you're not sure.
+- To merge instead of overwriting, use `git pull origin main --allow-unrelated-histories` before pushing — but expect a merge conflict on README.md since both sides have one, which is more fiddly to resolve in Termux.
 
 ## 🗄️ Database Access (MongoDB Atlas vs. Turso)
 
@@ -143,6 +179,11 @@ Execute the following commands in Termux to set up dependencies and push updates
 
 - **Public App URL**: `https://<your-render-app>.onrender.com`
 - **API Endpoint Check**: `https://<your-render-app>.onrender.com/api/cars/search`
+
+## 🔗 Vercel Deployment ✅ Done
+
+- **Live App**: [sql-db-foundation-car-rental](https://sql-db-foundation-car-rental-crnojm6xn-gpuc.vercel.app)
+- ⚠️ Comparison/testing deployment only — see the Vercel vs. Render note above. WebSocket/SSE features won't work reliably here since Vercel's functions don't hold a persistent connection.
 
 ## 🚀 Quickstart Guide
 
